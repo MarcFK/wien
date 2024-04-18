@@ -37,6 +37,9 @@ L.control
   }, {
     "Sehenswürdigkeiten": themaLayer.sights,
     "Vienna Sightseeing Linien": themaLayer.lines,
+    "Haltestellen Sightseeing": themaLayer.stops,
+    "Fußgängerzonen": themaLayer.zones,
+    "Hotels": themaLayer.hotels
 
   })
   .addTo(map);
@@ -100,7 +103,7 @@ async function loadLines(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      
+
     }
   }).addTo(themaLayer.lines);
 }
@@ -119,7 +122,7 @@ async function loadStops(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      
+
     }
   }).addTo(themaLayer.stops);
 }
@@ -138,7 +141,7 @@ async function loadZones(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      
+
     }
   }).addTo(themaLayer.zones);
 }
@@ -158,7 +161,7 @@ async function loadHotels(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      
+
     }
   }).addTo(themaLayer.hotels);
 }
