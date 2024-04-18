@@ -105,7 +105,7 @@ async function loadLines(url) {
     onEachFeature: function (feature, layer) {
       console.log(feature);
       layer.bindPopup(`
-      <h4> ${feature.properties.LINE_NAME} </h4>
+      <h4> <linie> ${feature.properties.LINE_NAME} </h4>
       `);
 
     }
