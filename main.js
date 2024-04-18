@@ -40,3 +40,10 @@ L.control
     imperial: false,
   })
   .addTo(map);
+
+L.control
+  .fullscreen()
+  .addTo(map);
+
+
+
