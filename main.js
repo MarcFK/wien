@@ -72,11 +72,11 @@ async function loadSights(url) {
   // console.log("Loading", url)
   let response = await fetch(url);
   let geojson = await response.json();
-  console.log(geojson); // nicht unbedingt nötig
+  // console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
-      console.log(feature.properties.NAME);
+      // console.log(feature);
+      // console.log(feature.properties.NAME);
       layer.bindPopup(`
         <img src = "${feature.properties.THUMBNAIL}" alt ="*">
         <h4><a href = "${feature.properties.WEITERE_INF}" 
@@ -103,6 +103,10 @@ async function loadLines(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
+      console.log(feature);
+      layer.bindPopup(`
+      <h4> ${feature.properties.LINE_NAME} </h4>
+      `);
 
     }
   }).addTo(themaLayer.lines);
