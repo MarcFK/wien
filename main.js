@@ -127,7 +127,7 @@ async function loadStops(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      // console.log(feature);
       layer.bindPopup(`
       <h4> ${feature.properties.LINE_NAME} </h4>
       <statid> ${feature.properties.STAT_ID} </statid>
@@ -152,6 +152,12 @@ async function loadZones(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
+      console.log(feature);
+      layer.bindPopup(`
+      <h4> Fußgängerzone ${feature.properties.ADRESSE} </h4>
+      <time> ${feature.properties.ZEITRAUM} </time>
+      <p><info> ${feature.properties.AUSN_TEXT}</info></p>
+      `);
 
     }
   }).addTo(themaLayer.zones);
