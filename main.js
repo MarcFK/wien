@@ -108,7 +108,6 @@ async function loadLines(url) {
       <br><i class = "fa-solid fa-arrow-down"></i>
       <br><finish><i class = "fa-regular fa-circle-stop"></i> ${feature.properties.TO_NAME} </finish>
       `);
-
     }
   }).addTo(themaLayer.lines);
 }
@@ -131,7 +130,6 @@ async function loadStops(url) {
       <statid> ${feature.properties.STAT_ID} </statid>
       <station> ${feature.properties.STAT_NAME} </station>
       `);
-
     }
   }).addTo(themaLayer.stops);
 }
@@ -154,7 +152,6 @@ async function loadZones(url) {
       <time><i class = "fa-regular fa-clock"></i> ${feature.properties.ZEITRAUM} </time>
       <p><info><i class = "fa-solid fa-circle-info"></i> ${feature.properties.AUSN_TEXT} </info></p>
       `);
-
     }
   }).addTo(themaLayer.zones);
 }
@@ -175,12 +172,12 @@ async function loadHotels(url) {
       layer.bindPopup(`
       <h2> ${feature.properties.BETRIEB} </h2>
       <h4> ${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT} </h4>
+      <br> <i class = "trennlinie"></i>
       <adress> Addr.: ${feature.properties.ADRESSE} </adress>
       <br><tel> Tel.: <a href = "${feature.properties.KONTAKT_TEL}"> ${feature.properties.KONTAKT_TEL} </a></tel>
       <br><a href = "${feature.properties.KONTAKT_EMAIL}"> ${feature.properties.KONTAKT_EMAIL} </a>
       <br><a href = "${feature.properties.WEBLINK1}"> Homepage </a>
       `);
-
     }
   }).addTo(themaLayer.hotels);
 }

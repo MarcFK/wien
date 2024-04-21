@@ -50,3 +50,8 @@ footer {
 footer nav {
     display: inline-block;
 }
+
+.trennlinie {
+    border: none; /* Keine Rahmen */
+    border-bottom: 1px solid black; /* Schwarze horizontale Linie unter dem Text */
+}
