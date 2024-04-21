@@ -89,7 +89,6 @@ async function loadSights(url) {
 
 loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json")
 
-
 /* suche Sightseeing */
 
 // loadLines
@@ -105,7 +104,9 @@ async function loadLines(url) {
     onEachFeature: function (feature, layer) {
       console.log(feature);
       layer.bindPopup(`
-      <h4> <linie> ${feature.properties.LINE_NAME} </h4>
+      <h4> ${feature.properties.LINE_NAME} </h4>
+      <start> ${feature.properties.FROM_NAME} </start>
+      <p><finish> ${feature.properties.TO_NAME} </finish></p>
       `);
 
     }
