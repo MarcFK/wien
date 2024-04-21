@@ -1,5 +1,9 @@
 /* Vienna Sightseeing Beispiel */
 
+// eigene Stile und Hauptskript
+
+<link rel="stylesheet" href="main.css" />
+
 // Stephansdom Objekt
 let stephansdom = {
   lat: 48.208493,
