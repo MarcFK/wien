@@ -152,11 +152,11 @@ async function loadZones(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      // console.log(feature);
       layer.bindPopup(`
       <h4> Fußgängerzone ${feature.properties.ADRESSE} </h4>
       <time> ${feature.properties.ZEITRAUM} </time>
-      <p><info> ${feature.properties.AUSN_TEXT}</info></p>
+      <p><info> ${feature.properties.AUSN_TEXT} </info></p>
       `);
 
     }
@@ -165,11 +165,9 @@ async function loadZones(url) {
 
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json")
 
-
 // hotels
 // loadHotels
-// Hotesl und Unterkünfte Wien
-// hotels
+// Hotels und Unterkünfte Wien
 
 async function loadHotels(url) {
   // console.log("Loading", url)
@@ -178,6 +176,15 @@ async function loadHotels(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
+      console.log(feature);
+      layer.bindPopup(`
+      <h2> ${feature.properties.BETRIEB} </h2>
+      <h4> ${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT} </h4>
+      <adress> Addr.: ${feature.properties.ADRESSE} </adress>
+      <br><tel> Tel.: <a href = "${feature.properties.KONTAKT_TEL}"> ${feature.properties.KONTAKT_TEL} </a></tel>
+      <br><a href = "${feature.properties.KONTAKT_EMAIL}"> ${feature.properties.KONTAKT_EMAIL} </a>
+      <br><a href = "${feature.properties.WEBLINK1}"> Homepage </a>
+      `);
 
     }
   }).addTo(themaLayer.hotels);
