@@ -89,9 +89,8 @@ async function loadSights(url) {
 
 loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json")
 
-/* suche Sightseeing */
+/* Sightseeing */
 
-// loadLines
 // Touristische Kraftfahrlinien
 // lines
 
@@ -104,9 +103,10 @@ async function loadLines(url) {
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       layer.bindPopup(`
-      <h4> ${feature.properties.LINE_NAME} </h4>
-      <start> ${feature.properties.FROM_NAME} </start>
-      <p><finish> ${feature.properties.TO_NAME} </finish></p>
+      <h4><i class = "fa-solid fa-bus"></i> ${feature.properties.LINE_NAME} </h4>
+      <start><i class = "fa-regular fa-circle-stop"></i> ${feature.properties.FROM_NAME} </start>
+      <br><i class = "fa-solid fa-arrow-down"></i>
+      <p><finish><i class = "fa-regular fa-circle-stop"></i> ${feature.properties.TO_NAME} </finish></p>
       `);
 
     }
@@ -115,8 +115,6 @@ async function loadLines(url) {
 
 loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json")
 
-
-// loadStops
 // Touristische Kraftfahrlinien Haltestellen Vuenna Sightseeing linie Standorte Wien
 // stops
 
@@ -129,7 +127,7 @@ async function loadStops(url) {
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       layer.bindPopup(`
-      <h4> ${feature.properties.LINE_NAME} </h4>
+      <h4><i class = "fa-solid fa-bus"></i> ${feature.properties.LINE_NAME} </h4>
       <statid> ${feature.properties.STAT_ID} </statid>
       <station> ${feature.properties.STAT_NAME} </station>
       `);
@@ -140,10 +138,8 @@ async function loadStops(url) {
 
 loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json")
 
-
-// "fußgängerzone"
-// loadZones
 // Fußgängerzone Wien
+// zones
 
 async function loadZones(url) {
   // console.log("Loading", url)
@@ -155,8 +151,8 @@ async function loadZones(url) {
       // console.log(feature);
       layer.bindPopup(`
       <h4> Fußgängerzone ${feature.properties.ADRESSE} </h4>
-      <time> ${feature.properties.ZEITRAUM} </time>
-      <p><info> ${feature.properties.AUSN_TEXT} </info></p>
+      <time><i class = "fa-regular fa-clock"></i> ${feature.properties.ZEITRAUM} </time>
+      <p><info><i class = "fa-solid fa-circle-info"></i> ${feature.properties.AUSN_TEXT} </info></p>
       `);
 
     }
@@ -165,9 +161,8 @@ async function loadZones(url) {
 
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json")
 
-// hotels
-// loadHotels
 // Hotels und Unterkünfte Wien
+// hotels
 
 async function loadHotels(url) {
   // console.log("Loading", url)
