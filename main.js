@@ -1,9 +1,5 @@
 /* Vienna Sightseeing Beispiel */
 
-// eigene Stile und Hauptskript
-
-<link rel="stylesheet" href="main.css" />
-
 // Stephansdom Objekt
 let stephansdom = {
   lat: 48.208493,
@@ -176,7 +172,6 @@ async function loadHotels(url) {
       layer.bindPopup(`
       <h2> ${feature.properties.BETRIEB} </h2>
       <h4> ${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT} </h4>
-      <br> <i class = "trennlinie"></i>
       <adress> Addr.: ${feature.properties.ADRESSE} </adress>
       <br><tel> Tel.: <a href = "${feature.properties.KONTAKT_TEL}"> ${feature.properties.KONTAKT_TEL} </a></tel>
       <br><a href = "${feature.properties.KONTAKT_EMAIL}"> ${feature.properties.KONTAKT_EMAIL} </a>
