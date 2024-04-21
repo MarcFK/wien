@@ -102,7 +102,7 @@ async function loadLines(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      // console.log(feature);
       layer.bindPopup(`
       <h4> ${feature.properties.LINE_NAME} </h4>
       <start> ${feature.properties.FROM_NAME} </start>
@@ -127,6 +127,12 @@ async function loadStops(url) {
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
+      console.log(feature);
+      layer.bindPopup(`
+      <h4> ${feature.properties.LINE_NAME} </h4>
+      <statid> ${feature.properties.STAT_ID} </statid>
+      <station> ${feature.properties.STAT_NAME} </station>
+      `);
 
     }
   }).addTo(themaLayer.stops);
