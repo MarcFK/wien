@@ -106,7 +106,7 @@ async function loadLines(url) {
       <h4><i class = "fa-solid fa-bus"></i> ${feature.properties.LINE_NAME} </h4>
       <start><i class = "fa-regular fa-circle-stop"></i> ${feature.properties.FROM_NAME} </start>
       <br><i class = "fa-solid fa-arrow-down"></i>
-      <p><finish><i class = "fa-regular fa-circle-stop"></i> ${feature.properties.TO_NAME} </finish></p>
+      <br><finish><i class = "fa-regular fa-circle-stop"></i> ${feature.properties.TO_NAME} </finish>
       `);
 
     }
