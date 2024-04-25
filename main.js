@@ -71,7 +71,7 @@ async function loadSights(url) {
     pointToLayer: function (feature, latlng) {
       return L.marker(latlng, {
         icon: L.icon({
-          iconURL: "icons/photo.png",
+          iconUrl: "icons/photo.png",
           iconAnchor: [16, 37],
           popupAnchor: [0, -37]
 
@@ -151,15 +151,24 @@ loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&vers
 
 // Touristische Kraftfahrlinien Haltestellen Vuenna Sightseeing linie Standorte Wien
 // stops
+/*
+bus_1.png // Red
+bus_2.png // Yellow
+bus_3.png // Blue
+bus_4.png // Green
+bus_5.png // Grey
+bus_6.png // Orange
+*/
 
 async function loadStops(url) {
   // console.log("Loading", url)
   let response = await fetch(url);
   let geojson = await response.json();
-  console.log(geojson); // nicht unbedingt nötig
+  // console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
+    
     onEachFeature: function (feature, layer) {
-      // console.log(feature);
+      console.log(feature.properties);
       layer.bindPopup(`
       <h4><i class = "fa-solid fa-bus"></i> ${feature.properties.LINE_NAME} </h4>
       <statid> ${feature.properties.STAT_ID} </statid>
@@ -211,10 +220,10 @@ async function loadHotels(url) {
   // console.log("Loading", url)
   let response = await fetch(url);
   let geojson = await response.json();
-  console.log(geojson); // nicht unbedingt nötig
+  // console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      // console.log(feature);
       layer.bindPopup(`
       <h2> ${feature.properties.BETRIEB} </h2>
       <h4> ${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT} </h4>
