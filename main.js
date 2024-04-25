@@ -106,7 +106,7 @@ async function loadLines(url) {
   // console.log(geojson);
   L.geoJSON(geojson, {
     style: function (feature) {
-      console.log(feature.properties.LINE_NAME);
+      // console.log(feature.properties.LINE_NAME);
       let lineName = feature.properties.LINE_NAME;
       let lineColor = "black";
       if (lineName == "Red Line") {
@@ -232,6 +232,36 @@ async function loadHotels(url) {
   let geojson = await response.json();
   // console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
+    pointToLayer: function (feature, latlng) {
+      // console.log(feature.properties.LINE_NAME);
+      let hotelKat = feature.properties.KATEGORIE_TXT;
+      console.log(hotelKat)
+      let hotelicon;
+
+      if (hotelKat == "nicht kategorisiert") {
+        hotelicon = "icons/hotel_0star.png";
+      } else if (hotelKat == "1*") {
+        hotelicon = "icons/hotel_1star.png";
+      } else if (hotelKat == "2*") {
+        hotelicon = "icons/hotel_2stars.png";
+      } else if (hotelKat == "3*") {
+        hotelicon = "icons/hotel_3stars.png";
+      } else if (hotelKat == "4*") {
+        hotelicon = "icons/hotel_4stars.png";
+      } else if (hotelKat == "5*") {
+        hotelicon = "icons/hotel_5stars.png";
+     };
+
+     return L.marker(latlng, {
+      icon: L.icon({
+        iconUrl: hotelicon,
+        iconAnchor: [16, 37],
+        popupAnchor: [0, -37]
+      })
+    })
+    
+  },
+
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       layer.bindPopup(`
