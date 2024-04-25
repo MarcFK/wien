@@ -92,16 +92,36 @@ async function loadLines(url) {
   // console.log("Loading", url)
   let response = await fetch(url);
   let geojson = await response.json();
-  console.log(geojson); // nicht unbedingt nötig
+  // console.log(geojson);
   L.geoJSON(geojson, {
     style: function (feature) {
+      console.log(feature.properties.LINE_NAME);
+      let lineName = feature.properties.LINE_NAME;
+      let lineColor = "black";
+      if (lineName == "Red Line") {
+        lineColor = "#FF4136"; 
+      } else if (lineName == "Yellow Line") {
+        lineColor = "#FFDC00";
+      } else if (lineName == "Blue Line") {
+        lineColor = "#0074D9";
+      } else if (lineName == "Green Line") {
+        lineColor = "#2ECC40";
+      } else if (lineName == "Grey Line") {
+        lineColor = "#AAAAAA";
+      } else if (lineName == "Orange Line") {
+        lineColor = "#FF851B";
+      } else {
+        // vielleicht kommen noch andere Linien dazu...
+      }
+
       return {
-        color: "#2ECC40",
+        color: lineColor,
         weight: 3,
         opacity: 0.8,
         fillOpacity: 0.5,
 
       };
+
     },
 
     onEachFeature: function (feature, layer) {
@@ -147,7 +167,7 @@ async function loadZones(url) {
   // console.log("Loading", url)
   let response = await fetch(url);
   let geojson = await response.json();
-  console.log(geojson); // nicht unbedingt nötig
+  // console.log(geojson);
   L.geoJSON(geojson, {
     style: function (feature) {
       return {
@@ -159,6 +179,7 @@ async function loadZones(url) {
       };
 
     },
+
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       layer.bindPopup(`
