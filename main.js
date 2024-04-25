@@ -44,12 +44,6 @@ L.control
   })
   .addTo(map);
 
-// Marker Stephansdom
-L.marker([stephansdom.lat, stephansdom.lng])
-  .addTo(map)
-  .bindPopup(stephansdom.title)
-  .openPopup();
-
 // Maßstab
 L.control
   .scale({
@@ -100,6 +94,16 @@ async function loadLines(url) {
   let geojson = await response.json();
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
+    style: function (feature) {
+      return {
+        color: "#2ECC40",
+        weight: 3,
+        opacity: 0.8,
+        fillOpacity: 0.5,
+
+      };
+    },
+
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       layer.bindPopup(`
