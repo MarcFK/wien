@@ -68,6 +68,17 @@ async function loadSights(url) {
   let geojson = await response.json();
   // console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
+    pointToLayer: function (feature, latlng) {
+      return L.marker(latlng, {
+        icon: L.icon({
+          iconURL: "icons/photo.png",
+          iconAnchor: [16, 37],
+          popupAnchor: [0, -37]
+
+        })
+      });
+    },
+
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       // console.log(feature.properties.NAME);
@@ -99,7 +110,7 @@ async function loadLines(url) {
       let lineName = feature.properties.LINE_NAME;
       let lineColor = "black";
       if (lineName == "Red Line") {
-        lineColor = "#FF4136"; 
+        lineColor = "#FF4136";
       } else if (lineName == "Yellow Line") {
         lineColor = "#FFDC00";
       } else if (lineName == "Blue Line") {
