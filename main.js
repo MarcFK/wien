@@ -15,11 +15,11 @@ let startLayer = L.tileLayer.provider("BasemapAT.grau");
 startLayer.addTo(map);
 
 let themaLayer = {
-  sights: L.featureGroup().addTo(map),
-  lines: L.featureGroup().addTo(map),
-  stops: L.featureGroup().addTo(map),
-  zones: L.featureGroup().addTo(map),
-  hotels: L.featureGroup().addTo(map)
+  sights: L.featureGroup(),
+  lines: L.featureGroup(),
+  stops: L.featureGroup(),
+  zones: L.featureGroup(),
+  hotels: L.featureGroup(),
 
 }
 
@@ -145,6 +145,16 @@ async function loadZones(url) {
   let geojson = await response.json();
   console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
+    style: function (feature) {
+      return {
+        color: "#F012BE",
+        weight: 1,
+        opacity: 0.4,
+        fillOpacity: 0.1,
+
+      };
+
+    },
     onEachFeature: function (feature, layer) {
       // console.log(feature);
       layer.bindPopup(`
