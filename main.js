@@ -176,7 +176,7 @@ async function loadStops(url) {
       })
 
     },
-    
+
     onEachFeature: function (feature, layer) {
       console.log(feature.properties);
       layer.bindPopup(`
@@ -250,7 +250,9 @@ async function loadHotels(url) {
         hotelicon = "icons/hotel_4stars.png";
       } else if (hotelKat == "5*") {
         hotelicon = "icons/hotel_5stars.png";
-     };
+      } else {
+        hotelicon = "icons/hotel_0star.png"
+      }
 
      return L.marker(latlng, {
       icon: L.icon({
@@ -258,8 +260,8 @@ async function loadHotels(url) {
         iconAnchor: [16, 37],
         popupAnchor: [0, -37]
       })
-    })
-    
+    });
+
   },
 
     onEachFeature: function (feature, layer) {
