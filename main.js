@@ -166,6 +166,16 @@ async function loadStops(url) {
   let geojson = await response.json();
   // console.log(geojson); // nicht unbedingt nötig
   L.geoJSON(geojson, {
+    pointToLayer: function (feature, latlng) {
+      return L.marker(latlng, {
+        icon: L.icon({
+          iconUrl: `icons/bus_${feature.properties.LINE_ID}.png`,
+          iconAnchor: [16, 37],
+          popupAnchor: [0, -37]
+        })
+      })
+
+    },
     
     onEachFeature: function (feature, layer) {
       console.log(feature.properties);
