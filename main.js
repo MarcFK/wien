@@ -8,20 +8,20 @@ let stephansdom = {
 };
 
 // Karte initialisieren
-let map = L.map("map").setView([stephansdom.lat, stephansdom.lng], 12);
+let map = L.map("map").setView([stephansdom.lat, stephansdom.lng], 15);
 
 // BasemapAT Layer mit Leaflet provider plugin als startLayer Variable
 let startLayer = L.tileLayer.provider("BasemapAT.grau");
 startLayer.addTo(map);
 
 let themaLayer = {
-  sights: L.featureGroup(),
-  lines: L.featureGroup(),
-  stops: L.featureGroup(),
-  zones: L.featureGroup(),
+  sights: L.featureGroup().addTo(map),
+  lines: L.featureGroup().addTo(map),
+  stops: L.featureGroup().addTo(map),
+  zones: L.featureGroup().addTo(map),
   hotels: L.markerClusterGroup({
     disableClusteringAtZoom: 17
-  }),
+  }).addTo(map),
 
 }
 
@@ -256,15 +256,15 @@ async function loadHotels(url) {
         hotelicon = "icons/hotel_0star.png"
       }
 
-     return L.marker(latlng, {
-      icon: L.icon({
-        iconUrl: hotelicon,
-        iconAnchor: [16, 37],
-        popupAnchor: [0, -37]
-      })
-    });
+      return L.marker(latlng, {
+        icon: L.icon({
+          iconUrl: hotelicon,
+          iconAnchor: [16, 37],
+          popupAnchor: [0, -37]
+        })
+      });
 
-  },
+    },
 
     onEachFeature: function (feature, layer) {
       // console.log(feature);
