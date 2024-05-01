@@ -151,16 +151,7 @@ async function loadLines(url) {
 
 loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json")
 
-// Touristische Kraftfahrlinien Haltestellen Vuenna Sightseeing linie Standorte Wien
-// stops
-/*
-bus_1.png // Red
-bus_2.png // Yellow
-bus_3.png // Blue
-bus_4.png // Green
-bus_5.png // Grey
-bus_6.png // Orange
-*/
+// Touristische Kraftfahrlinien Haltestellen Vienna Sightseeing
 
 async function loadStops(url) {
   // console.log("Loading", url)
@@ -216,8 +207,8 @@ async function loadZones(url) {
       // console.log(feature);
       layer.bindPopup(`
       <h4> Fußgängerzone ${feature.properties.ADRESSE} </h4>
-      <time><i class = "fa-regular fa-clock"></i> ${feature.properties.ZEITRAUM} </time>
-      <p><info><i class = "fa-solid fa-circle-info"></i> ${feature.properties.AUSN_TEXT} </info></p>
+      <time><i class = "fa-regular fa-clock"></i> ${feature.properties.ZEITRAUM || "dauerhaft"} </time>
+      <p><info><i class = "fa-solid fa-circle-info"></i> ${feature.properties.AUSN_TEXT || "ohne Ausnahmen"} </info></p>
       `);
     }
   }).addTo(themaLayer.zones);
@@ -226,7 +217,6 @@ async function loadZones(url) {
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json")
 
 // Hotels und Unterkünfte Wien
-// hotels
 
 async function loadHotels(url) {
   // console.log("Loading", url)
